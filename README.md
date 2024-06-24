@@ -40,5 +40,5 @@ Start from Sat 22 Jun, 2024 6:30 AM
 END ?
 
 https://ui.shadcn.com/docs/installation/next
-
+https://nextjs.org/learn/react-foundations/server-and-client-components
 
