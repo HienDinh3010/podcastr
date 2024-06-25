@@ -42,4 +42,10 @@ END ?
 https://ui.shadcn.com/docs/installation/next
 https://nextjs.org/learn/react-foundations/server-and-client-components
 https://docs.convex.dev/quickstart/nextjs
+https://docs.convex.dev/database/schemas
+https://docs.convex.dev/tutorial/client
+https://docs.convex.dev/functions/http-actions
+https://docs.convex.dev/auth/clerk
 
+
+https://ui.shadcn.com/docs/components/form
