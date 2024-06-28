@@ -1,13 +1,13 @@
 import { useRef, useState } from 'react';
-import { Button } from './button'
+import { Button } from './ui/button'
 import { cn } from '@/lib/utils';
-import { Label } from './label';
-import { Textarea } from './textarea';
+import { Label } from './ui/label';
+import { Textarea } from './ui/textarea';
 import { GenerateThumbnailProps } from '@/types';
 import { Loader } from 'lucide-react';
-import { Input } from './input';
+import { Input } from './ui/input';
 import Image from 'next/image';
-import { useToast } from './use-toast';
+import { useToast } from './ui/use-toast';
 import { useAction, useMutation } from 'convex/react';
 import { useUploadFiles } from '@xixixao/uploadstuff/react';
 import { api } from '@/convex/_generated/api';

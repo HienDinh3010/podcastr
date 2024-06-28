@@ -1,14 +1,15 @@
 import { GeneratePodcastProps } from '@/types'
 import React, { useState } from 'react'
-import { Label } from './label'
-import { Textarea } from './textarea'
-import { Button } from './button'
+
 import { Loader } from 'lucide-react'
 import { useAction, useMutation } from 'convex/react'
 import { api } from '@/convex/_generated/api'
 import { v4 as uuidv4 } from 'uuid';
 import { useUploadFiles } from '@xixixao/uploadstuff/react'
 import { toast, useToast } from '@/components/ui/use-toast' 
+import { Label } from './ui/label'
+import { Textarea } from './ui/textarea'
+import { Button } from './ui/button'
 
 const useGeneratePodcast = ({setAudio, voiceType, voicePrompt, setAudioStorageId}: GeneratePodcastProps) => {
     // Logic for podcast generation
