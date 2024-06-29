@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 import { api } from "@/convex/_generated/api";
-import { useAudio } from '@/app/providers/AudioProvider';
+import { useAudio } from '@/providers/AudioProvider';
 import { PodcastDetailPlayerProps } from "@/types";
 
 import LoaderSpinner from "./LoaderSpinner";
@@ -47,13 +47,14 @@ const PodcastDetailPlayer = ({
   };
 
   const handlePlay = () => {
-    // setAudio({
-    //   title: podcastTitle,
-    //   audioUrl,
-    //   imageUrl,
-    //   author,
-    //   podcastId,
-    // });
+    console.log("handlePlay")
+    setAudio({
+      title: podcastTitle,
+      audioUrl,
+      imageUrl,
+      author,
+      podcastId,
+    });
   };
 
   if (!imageUrl || !authorImageUrl) return <LoaderSpinner />;
