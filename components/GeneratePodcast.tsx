@@ -8,13 +8,11 @@ import { useAction, useMutation } from 'convex/react'
 import { api } from '@/convex/_generated/api'
 import { v4 as uuidv4 } from 'uuid';
 import { useToast } from "@/components/ui/use-toast"
-
 import { useUploadFiles } from '@xixixao/uploadstuff/react';
 
 const useGeneratePodcast = ({
-  setAudio, voiceType, voicePrompt, setAudioStorageId
+  setAudio, voiceType, voicePrompt, setAudioStorageId, setIsGenerating
 }: GeneratePodcastProps) => {
-  const [isGenerating, setIsGenerating] = useState(false);
   const { toast } = useToast()
 
   const generateUploadUrl = useMutation(api.files.generateUploadUrl);
@@ -64,14 +62,13 @@ const useGeneratePodcast = ({
       })
       setIsGenerating(false);
     }
-    
   }
 
-  return { isGenerating, generatePodcast }
+  return { generatePodcast }
 }
 
 const GeneratePodcast = (props: GeneratePodcastProps) => {
-  const { isGenerating, generatePodcast } = useGeneratePodcast(props);
+  const { generatePodcast } = useGeneratePodcast(props);
 
   return (
     <div>
@@ -88,16 +85,16 @@ const GeneratePodcast = (props: GeneratePodcastProps) => {
         />
       </div>
       <div className="mt-5 w-full max-w-[200px]">
-      <Button type="submit" className="text-16 bg-orange-1 py-4 font-bold text-white-1" onClick={generatePodcast}>
-        {isGenerating ? (
-          <>
-            Generating
-            <Loader size={20} className="animate-spin ml-2" />
-          </>
-        ) : (
-          'Generate'
-        )}
-      </Button>
+        <Button type="button" className="text-16 bg-orange-1 py-4 font-bold text-white-1" onClick={generatePodcast} disabled={props.isGenerating}>
+          {props.isGenerating ? (
+            <>
+              Generating
+              <Loader size={20} className="animate-spin ml-2" />
+            </>
+          ) : (
+            'Generate'
+          )}
+        </Button>
       </div>
       {props.audio && (
         <audio 
