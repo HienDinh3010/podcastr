@@ -60,7 +60,7 @@ const CreatePodcast = () => {
   const createPodcast = useMutation(api.podcasts.createPodcast)
 
   const { toast } = useToast()
-  // 1. Define your form.
+  
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -68,7 +68,12 @@ const CreatePodcast = () => {
       podcastDescription: "",
     },
   })
- 
+
+  const isFormValid = () => {
+    const { podcastTitle, podcastDescription } = form.getValues();
+    return podcastTitle.length >= 2 && podcastDescription.length >= 2 && audioUrl && imageUrl && voiceType;
+  }
+
   async function onSubmit(data: z.infer<typeof formSchema>) {
     try {
       setIsSubmitting(true);
@@ -187,7 +192,11 @@ const CreatePodcast = () => {
               />
 
               <div className="mt-10 w-full">
-                <Button type="submit" className="text-16 w-full bg-orange-1 py-4 font-extrabold text-white-1 transition-all duration-500 hover:bg-black-1">
+                <Button 
+                  type="submit" 
+                  className="text-16 w-full bg-orange-1 py-4 font-extrabold text-white-1 transition-all duration-500 hover:bg-black-1"
+                  disabled={!isFormValid() || isSubmitting}
+                >
                   {isSubmitting ? (
                     <>
                       Submitting
