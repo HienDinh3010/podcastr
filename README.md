@@ -3,22 +3,11 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 ## Getting Started
 
 First, run the development server:
-
-```bash
+npx convex dev
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
 
 ## Learn More
 
@@ -36,8 +25,8 @@ The easiest way to deploy your Next.js app is to use the [Vercel Platform](https
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
 
 ## Personal Notes:
-Start from Sat 22 Jun, 2024 6:30 AM
-END ?
+START Sat 22 Jun, 2024 06:30 AM
+DONE  Sat 29 Jun, 2024 11:00 AM
 
 https://ui.shadcn.com/docs/installation/next
 https://nextjs.org/learn/react-foundations/server-and-client-components
@@ -46,6 +35,7 @@ https://docs.convex.dev/database/schemas
 https://docs.convex.dev/tutorial/client
 https://docs.convex.dev/functions/http-actions
 https://docs.convex.dev/auth/clerk
-
-
 https://ui.shadcn.com/docs/components/form
+https://docs.convex.dev/quickstart/nextjs
+https://platform.openai.com/
+https://stackoverflow.com/questions/75898276/openai-api-error-429-you-exceeded-your-current-quota-please-check-your-plan-a
