@@ -2,14 +2,23 @@ import React from 'react'
 import Image from "next/image";
 import { PodcastCardProps } from '@/types';
 import { useRouter } from 'next/navigation';
+import { useMutation } from 'convex/react';
+import { api } from '@/convex/_generated/api';
 
 const PodcastCard = ({
     imgUrl, title, description, podcastId
 } : PodcastCardProps) => {
     const router = useRouter()
-    const handlerViews = () => {
-        // increase views
+    const updatePodcastViews = useMutation(api.podcasts.updatePodcastViews);
 
+    const handlerViews = async () => {
+        // increase views
+        try {
+            await updatePodcastViews({podcastId});
+            console.log("updatePodcastViews successfully")
+        } catch(error) {
+            console.error("Error updating podcast", error);
+        }
         router.push(`/podcasts/${podcastId}`, {
             scroll: true
         })

@@ -29,6 +29,24 @@ const PodcastDetailPlayer = ({
   const { toast } = useToast();
   const [isDeleting, setIsDeleting] = useState(false);
   const deletePodcast = useMutation(api.podcasts.deletePodcast);
+  const [menuVisible, setMenuVisible] = useState(false);
+
+  const toggleMenu = () => {
+    setMenuVisible(!menuVisible);
+  };
+
+  const handleMenuClick = (action: string) => {
+    setMenuVisible(false);
+    if (action === 'delete') {
+      handleDelete();
+    } else if (action === 'update') {
+      handleUpdate();
+    }
+  };
+
+  const handleUpdate = async () => {
+    console.log('handleUpdate')
+  }
 
   const handleDelete = async () => {
     try {
@@ -113,20 +131,34 @@ const PodcastDetailPlayer = ({
             height={30}
             alt="Three dots icon"
             className="cursor-pointer"
-            onClick={() => setIsDeleting((prev) => !prev)}
+            onClick={toggleMenu}
           />
-          {isDeleting && (
-            <div
-              className="absolute -left-32 -top-2 z-10 flex w-32 cursor-pointer justify-center gap-2 rounded-md bg-black-6 py-1.5 hover:bg-black-2"
-              onClick={handleDelete}
-            >
-              <Image
-                src="/icons/delete.svg"
-                width={16}
-                height={16}
-                alt="Delete icon"
-              />
-              <h2 className="text-16 font-normal text-white-1">Delete</h2>
+          {menuVisible && (
+            <div className="absolute right-0 top-8 z-10 w-32 rounded-md bg-black-6 py-1.5 shadow-md">
+              <div
+                className="flex cursor-pointer justify-center gap-2 py-2 hover:bg-black-2"
+                onClick={() => handleMenuClick('delete')}
+              >
+                <Image
+                  src="/icons/delete.svg"
+                  width={16}
+                  height={16}
+                  alt="Delete icon"
+                />
+                <h2 className="text-16 font-normal text-white-1">Delete</h2>
+              </div>
+              <div
+                className="flex cursor-pointer justify-center gap-2 py-2 hover:bg-black-2"
+                onClick={() => handleMenuClick('update')}
+              >
+                <Image
+                  src="/icons/update.svg"
+                  width={16}
+                  height={16}
+                  alt="Update icon"
+                />
+                <h2 className="text-16 font-normal text-white-1">Update</h2>
+              </div>
             </div>
           )}
         </div>
