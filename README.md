@@ -23,9 +23,9 @@ Tailwind CSS
 
 ## Getting Started
 
-Clone project then run the development server:
-npx convex dev
-npm run dev
+Clone project then run the development server: <br>
+npx convex dev <br>
+npm run dev <br>
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
