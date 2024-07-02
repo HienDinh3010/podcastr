@@ -1,4 +1,4 @@
-
+[![IMAGE ALT TEXT HERE]()](https://www.youtube.com/watch?v=lCfFgWOTBpU)
 ## Getting Started
 
 First, run the development server:
