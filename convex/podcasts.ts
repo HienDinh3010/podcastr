@@ -186,6 +186,98 @@ export const updatePodcastViews = mutation({
   },
 });
 
+// this mutation will update the podcast.
+export const updatePodcast = mutation({
+  args: {
+    podcastId: v.id("podcasts"),
+    audioStorageId: v.id("_storage"),
+    podcastTitle: v.string(),
+    podcastDescription: v.string(),
+    audioUrl: v.string(),
+    imageUrl: v.string(),
+    imageStorageId: v.id("_storage"),
+    voicePrompt: v.string(),
+    imagePrompt: v.string(),
+    voiceType: v.string(),
+    audioDuration: v.number(),
+  },
+  handler: async (ctx, args) => {
+    const identity = await ctx.auth.getUserIdentity();
+
+    if (!identity) {
+      throw new ConvexError("User not authenticated");
+    }
+
+    const user = await ctx.db
+      .query("users")
+      .filter((q) => q.eq(q.field("email"), identity.email))
+      .collect();
+
+    if (user.length === 0) {
+      throw new ConvexError("User not found");
+    }
+
+    const podcast = await ctx.db.get(args.podcastId);
+
+    if (!podcast) {
+      throw new ConvexError("Podcast not found");
+    }
+    // start updating
+    if (args.audioStorageId !== podcast.audioStorageId) {
+      await ctx.storage.delete(args.audioStorageId);
+      await ctx.db.patch(args.podcastId, {
+        audioStorageId: args.audioStorageId
+      })
+    }
+    if (args.podcastTitle !== podcast.podcastTitle) {
+      await ctx.db.patch(args.podcastId, {
+        podcastTitle: args.podcastTitle
+      })
+    }
+    if (args.podcastDescription !== podcast.podcastDescription) {
+      await ctx.db.patch(args.podcastId, {
+        podcastDescription: args.podcastDescription
+      })
+    }
+    if (args.audioUrl !== podcast.audioUrl) {
+      await ctx.db.patch(args.podcastId, {
+        audioUrl: args.audioUrl
+      })
+    }
+    if (args.imageUrl !== podcast.imageUrl) {
+      await ctx.db.patch(args.podcastId, {
+        imageUrl: args.imageUrl
+      })
+    }
+    if (args.imageStorageId !== podcast.imageStorageId) {
+      await ctx.storage.delete(args.imageStorageId);
+      await ctx.db.patch(args.podcastId, {
+        imageStorageId: args.imageStorageId
+      })
+    }
+    if (args.voicePrompt !== podcast.voicePrompt) {
+      await ctx.db.patch(args.podcastId, {
+        voicePrompt: args.voicePrompt
+      })
+    }
+    if (args.imagePrompt !== podcast.imagePrompt) {
+      await ctx.db.patch(args.podcastId, {
+        imagePrompt: args.imagePrompt
+      })
+    }
+    if (args.voiceType !== podcast.voiceType) {
+      await ctx.db.patch(args.podcastId, {
+        voiceType: args.voiceType
+      })
+    }
+    if (args.audioDuration !== podcast.audioDuration) {
+      await ctx.db.patch(args.podcastId, {
+        audioDuration: args.audioDuration
+      })
+    }
+  },
+});
+
 // this mutation will delete the podcast.
 export const deletePodcast = mutation({
   args: {

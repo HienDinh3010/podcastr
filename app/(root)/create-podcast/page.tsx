@@ -52,7 +52,7 @@ const CreatePodcast = () => {
   const [audioStorageId, setAudioStorageId] = useState<Id<"_storage"> | null>(null)
   const [audioDuration, setAudioDuration] = useState(0);
   
-  const [voiceType, setVoiceType] = useState<string | null>(null);
+  const [voiceType, setVoiceType] = useState('');
   const [voicePrompt, setVoicePrompt] = useState('');
   
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -100,7 +100,9 @@ const CreatePodcast = () => {
       })
       toast({ title: 'Podcast created' })
       setIsSubmitting(false);
-      router.push('/')
+      router.push(`/podcasts/${podcast}`, {
+        scroll: true
+      })
     } catch (error) {
       console.log(error);
       toast({

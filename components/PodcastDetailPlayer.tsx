@@ -11,6 +11,7 @@ import { PodcastDetailPlayerProps } from "@/types";
 import LoaderSpinner from "./LoaderSpinner";
 import { Button } from "./ui/button";
 import { useToast } from "./ui/use-toast";
+import Link from 'next/link';
 
 const PodcastDetailPlayer = ({
   audioUrl,
@@ -29,6 +30,7 @@ const PodcastDetailPlayer = ({
   const { toast } = useToast();
   const [isDeleting, setIsDeleting] = useState(false);
   const deletePodcast = useMutation(api.podcasts.deletePodcast);
+  const updatePodcast = useMutation(api.podcasts.updatePodcast);
   const [menuVisible, setMenuVisible] = useState(false);
 
   const toggleMenu = () => {
@@ -46,6 +48,10 @@ const PodcastDetailPlayer = ({
 
   const handleUpdate = async () => {
     console.log('handleUpdate')
+    //Open update form
+    router.push(`/update-podcast/${podcastId}`, {
+      scroll: true
+    })
   }
 
   const handleDelete = async () => {

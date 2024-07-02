@@ -13,7 +13,7 @@ import { useUploadFiles } from '@xixixao/uploadstuff/react';
 import { api } from '@/convex/_generated/api';
 import { v4 as uuidv4 } from 'uuid';
 
-const GenerateThumbnail = ({ setImage, setImageStorageId, image, imagePrompt, setImagePrompt }: GenerateThumbnailProps) => {
+const UpdateGenerateThumbnail = ({ setImage, setImageStorageId, image, imagePrompt, setImagePrompt }: GenerateThumbnailProps) => {
   const [isAiThumbnail, setIsAiThumbnail] = useState(false);
   const [isImageLoading, setIsImageLoading] = useState(false);
   const imageRef = useRef<HTMLInputElement>(null);
@@ -57,7 +57,6 @@ const GenerateThumbnail = ({ setImage, setImageStorageId, image, imagePrompt, se
       toast({ title: 'Error generating thumbnail', variant: 'destructive'})
     }
   }
-
   const uploadImage = async (e: React.ChangeEvent<HTMLInputElement>) => {
     e.preventDefault();
 
@@ -114,7 +113,7 @@ const GenerateThumbnail = ({ setImage, setImageStorageId, image, imagePrompt, se
             />
           </div>
           <div className="w-full max-w-[200px]">
-          <Button type="button" className="text-16 bg-orange-1 py-4 font-bold text-white-1" onClick={() => {
+          <Button type="button" className="text-16 bg-orange-1 py-4 font-bold text-white-1"       onClick={() => {
         setIsImageLoading(true);
         generateImage();
       }}>
@@ -168,4 +167,4 @@ const GenerateThumbnail = ({ setImage, setImageStorageId, image, imagePrompt, se
   )
 }
 
-export default GenerateThumbnail
+export default UpdateGenerateThumbnail

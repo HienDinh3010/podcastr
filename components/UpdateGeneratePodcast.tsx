@@ -59,7 +59,7 @@ const useGeneratePodcast = ({
     } catch (error) {
       console.log('Error generating audio podcast', error)
       toast({
-        title: "Error creating a podcast",
+        title: "Error creating a audio podcast",
         variant: 'destructive',
       })
       setIsGenerating(false);
@@ -70,7 +70,7 @@ const useGeneratePodcast = ({
   return { isGenerating, generatePodcast }
 }
 
-const GeneratePodcast = (props: GeneratePodcastProps) => {
+const UpdateGeneratePodcast = (props: GeneratePodcastProps) => {
   const { isGenerating, generatePodcast } = useGeneratePodcast(props);
 
   return (
@@ -112,4 +112,4 @@ const GeneratePodcast = (props: GeneratePodcastProps) => {
   )
 }
 
-export default GeneratePodcast
+export default UpdateGeneratePodcast
