@@ -15,12 +15,15 @@ Tailwind CSS
 - Advanced and resuable features such as Form Management using TypeScript, React hook form and Zod
 - Mordern mobile responsive UI using ShadCN & Tailwind CSS
 - Clerk for authentication
-- OpenAI APIs to generate podcast audio and image
+- OpenAI APIs to generate podcast audio and image (https://platform.openai.com/docs/api-reference/introduction)
+![image](https://github.com/HienDinh3010/podcastr/assets/44892850/126add63-8dd2-4439-baba-185575a57f19)
+
 - Convex: an open-source backend that allows you to build full stack apps.
+![image](https://github.com/HienDinh3010/podcastr/assets/44892850/9b14fd43-c9b1-449a-857f-296c44f5403c)
 
 ## Getting Started
 
-First, run the development server:
+Clone project then run the development server:
 npx convex dev
 npm run dev
 
