@@ -1,4 +1,6 @@
-[![IMAGE ALT TEXT HERE]()](https://www.youtube.com/watch?v=lCfFgWOTBpU)
+[![IMAGE ALT TEXT HERE](https://raw.githubusercontent.com/HienDinh3010/podcastr/main/public/images/podcast.png)](https://www.youtube.com/watch?v=lCfFgWOTBpU)
+
+## Visit https://podcastr-jet-iota.vercel.app/
 ## Getting Started
 
 First, run the development server:
